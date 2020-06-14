@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>用户登录</title>
+		<link rel="stylesheet" href="../../lib/element2.13.0/lib-master/theme-chalk/index.css" />
+		<link rel="stylesheet" href="./login.css" />
+		<script src="../../lib/vue/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../lib/jquery-3.4.1/jquery-3.4.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../lib/element2.13.0/lib-master/index.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../lib/layer/layer.js"></script>
+		<script src="../../lib/axios/dist/axios.js"></script>
+	</head>
+	<body>
+		<div id="login">
+			<div class="mid_box">
+				<div class="mid_left_box">
+					<img src="../../img/head.jpg" />
+				</div>
+				<div class="mid_right_box">
+					<div class="title">欢迎登录使用</div>
+					<el-form :model="ruleForm" :rules="rules" ref="ruleForm" class="ruleForm" status-icon>
+						<el-form-item prop="name">
+							<el-input v-model="ruleForm.name" placeholder="请输入用户名"></el-input>
+						</el-form-item>
+						<el-form-item prop="pwd">
+							<el-input v-model="ruleForm.pwd" type="password" placeholder="请输入密码"></el-input>
+						</el-form-item>
+						<el-form-item>
+							<el-button type="primary" class="login_btn" @click="submitForm('ruleForm')">登录</el-button>
+						</el-form-item>
+					</el-form>
+					<div class="register"><a href="../reg/reg.html">前往注册</a></div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="./login.js"></script>
+</html>

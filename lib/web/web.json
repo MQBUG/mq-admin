@@ -1,0 +1,50 @@
+{
+	"name": "mq-admin",
+	"author":"MQ",
+	"version": "1.0.0",
+	"webInfo": {
+		"bg":"#545c64",
+		"textColor": "#fff",
+		"textColorActive": "#ffd04b"
+	},
+	"activeIndex":0,
+	"navs": [ {
+		"title": "介绍",
+		"icon": "el-icon-user-solid",
+		"href": "pages/intro/index.html",
+		"id": "6"
+	},{
+		"title": "表格",
+		"icon": "el-icon-s-platform",
+		"href": "pages/table.html",
+		"id": "1"
+	}, {
+		"title": "红包",
+		"icon": "el-icon-goods",
+		"href": "pages/redPacket/index.html",
+		"id": "2"
+	},  {
+		"title": "demo",
+		"icon": "el-icon-goods",
+		"href": "pages/demo/index.html",
+		"id": "4"
+	},{
+		"title": "控制台2",
+		"icon": "el-icon-setting",
+		"href": "#",
+		"id": "3",
+		"children": [{
+				"title": "选项1",
+				"icon": "el-icon-picture",
+				"href": "pages/test2.html",
+				"id": "3-1"
+			},
+			{
+				"title": "选项2",
+				"icon": "el-icon-help",
+				"href": "pages/test1.html",
+				"id": "3-2"
+			}
+		]
+	}]
+}

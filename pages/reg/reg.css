@@ -1,0 +1,73 @@
+body {
+	background-image: url(../../img/bg1.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-attachment: fixed;
+}
+
+.mid_box {
+	width: 80%;
+	height: 80%;
+	min-width: 800px;
+	min-height: 400px;
+	box-shadow: 10px 6px 50px rgba(0, 0, 0, .2), 0 0 6px rgba(0, 0, 0, .4);
+	border-radius: 30px;
+	margin: 50px auto;
+	overflow: hidden;
+}
+
+.mid_left_box {
+	float: left;
+}
+
+.mid_left_box img {
+	margin: 50px;
+	width: 70px;
+	height: 70px;
+	border-radius: 35px;
+}
+
+.mid_right_box {
+	width: 300px;
+	height: 100%;
+	background-color: white;
+	float: right;
+	padding: 70px 50px;
+}
+
+.title {
+	font-size: 28px;
+	letter-spacing: 5px;
+}
+
+/* 重写 element 样式 */
+.ruleForm {
+	margin-top: 70px;
+}
+
+.el-input__inner {
+	border-radius: 30px;
+	background-color: #f7f5fb;
+}
+
+.login_btn {
+	width: 100%;
+	border-radius: 20px;
+	height: 45px;
+	font-size: 20px;
+	background: linear-gradient(to right, #2E9FFF, #3E79FF);
+	box-shadow: 0 4px 10px rgba(0, 123, 255, .5);
+	margin-top: 30px;
+	letter-spacing: 10px;
+}
+
+.register {
+	display: inline-block;
+	width: 48%;
+	height: 15px;
+	line-height: 15px;
+	text-align: center;
+	cursor: pointer;
+	color: #4291ff;
+	margin-top: 50px;
+}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>demo</title>
+		<link rel="stylesheet" href="./index.css" />
+		<link rel="stylesheet" href="../../css/mqpages.css" />
+		<script src="../../js/mqpages.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<el-card class="box-card">
+				<div v-for="o in 4" :key="o" class="text item">
+					{{'列表内容 ' + o }}
+				</div>
+			</el-card>
+		</div>
+	</body>
+	<script src="./index.js"></script>
+</html>

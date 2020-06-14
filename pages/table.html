@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>数据表格</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<script src="../lib/jquery-3.4.1/jquery-3.4.1.js"></script>
+		<link rel="stylesheet" href="../lib/element2.13.0/lib-master/theme-chalk/index.css" />
+		<script src="../lib/vue/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../lib/layer/layer.js"></script>
+		<script src="../lib/element2.13.0/lib-master/index.js"></script>
+	</head>
+	<body>
+		<div id="table">
+			<el-card class="box-card">
+				<template>
+					<el-table :data="tableData" height="450" border style="width: 100%">
+						<el-table-column type="index" label="序号" align="center" width="50">
+						</el-table-column>
+						<el-table-column prop="date" label="日期" align="center" width="180">
+						</el-table-column>
+						<el-table-column prop="name" label="姓名" width="180">
+						</el-table-column>
+						<el-table-column prop="address" label="地址">
+						</el-table-column>
+						<el-table-column fixed="right" align="center" label="操作" width="200">
+							<template slot-scope="scope">
+								<!-- <el-button @click="handleClick(scope.row)" type="primary" size="mini">查看</el-button> -->
+								<!-- <el-button type="success" size="mini">编辑</el-button> -->
+								<!-- <el-button @click="del" type="text" size="small">删除</el-button> -->
+								<el-button type="primary" @click="dialogTableVisible = true" icon="el-icon-view" circle size="mini"></el-button>
+								<el-button type="success" icon="el-icon-edit" circle size="mini"></el-button>
+								<el-button type="danger" icon="el-icon-delete" circle size="mini"></el-button>
+							</template>
+						</el-table-column>
+					</el-table>
+				</template>
+				<!-- 分页 -->
+				<div class="block" style="margin-top: 20px;">
+					<el-pagination background @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage"
+					 :page-sizes="[100, 200, 300, 400]" :page-size="100" layout="total, sizes, prev, pager, next, jumper" :total="400">
+					</el-pagination>
+				</div>
+			</el-card>
+
+			<!-- 弹窗 -->
+			<el-dialog title="收货地址" :visible.sync="dialogTableVisible">
+				<el-table :data="tableData">
+					<el-table-column property="date" label="日期" width="150"></el-table-column>
+					<el-table-column property="name" label="姓名" width="200"></el-table-column>
+					<el-table-column property="address" label="地址"></el-table-column>
+				</el-table>
+			</el-dialog>
+		</div>
+	</body>
+	<script>
+		var vm = new Vue({
+			el: "#table",
+			data: {
+				currentPage: 1,
+				dialogTableVisible: false,
+				tableData: [{
+						date: '2016-05-03',
+						name: '王小虎',
+						address: '上海市普陀区金沙江路 1518 弄'
+					}, {
+						date: '2016-05-02',
+						name: '王小虎',
+						address: '上海市普陀区金沙江路 1518 弄'
+					}, {
+						date: '2016-05-04',
+						name: '王小虎',
+						address: '上海市普陀区金沙江路 1518 弄'
+					}, {
+						date: '2016-05-01',
+						name: '王小虎',
+						address: '上海市普陀区金沙江路 1518 弄'
+					}, {
+						date: '2016-05-08',
+						name: '王小虎',
+						address: '上海市普陀区金沙江路 1518 弄'
+					}, {
+						date: '2016-05-06',
+						name: '王小虎',
+						address: '上海市普陀区金沙江路 1518 弄'
+					}, {
+						date: '2016-05-07',
+						name: '王小虎',
+						address: '上海市普陀区金沙江路 1518 弄'
+					},
+					{
+						date: '2016-05-01',
+						name: '王小虎',
+						address: '上海市普陀区金沙江路 1518 弄'
+					}, {
+						date: '2016-05-08',
+						name: '王小虎',
+						address: '上海市普陀区金沙江路 1518 弄'
+					}, {
+						date: '2016-05-06',
+						name: '王小虎',
+						address: '上海市普陀区金沙江路 1518 弄'
+					}, {
+						date: '2016-05-07',
+						name: '王小虎',
+						address: '上海市普陀区金沙江路 1518 弄'
+					}
+				]
+			},
+			methods: {
+				handleClick(row) {
+					console.log(row);
+				},
+				handleSizeChange(val) {
+					console.log(`每页 ${val} 条`);
+				},
+				handleCurrentChange(val) {
+					console.log(`当前页: ${val}`);
+				},
+				del() { //删除
+					this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+						confirmButtonText: '确定',
+						cancelButtonText: '取消',
+						type: 'warning'
+					}).then(() => {
+						this.$message({
+							type: 'success',
+							message: '删除成功!'
+						});
+					}).catch(() => {
+						this.$message({
+							type: 'info',
+							message: '已取消删除'
+						});
+					});
+				}
+
+			}
+		})
+	</script>
+</html>

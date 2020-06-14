@@ -1,0 +1,75 @@
+body,
+html {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+.app {
+	width: 100%;
+	height: 100%;
+	background-color: azure;
+	position: relative;
+}
+
+.redimg {
+	width: 50px;
+	height: auto;
+	position: absolute;
+	left: 0;
+	animation: all 3s;
+}
+
+.hide {
+	display: none;
+}
+
+.bottom {
+	bottom: 0;
+}
+
+.red_rain_box {
+	width: 90%;
+	height: 90%;
+	margin: 0 auto;
+	background-color: #007DDB;
+	position: relative;
+	overflow: hidden;
+}
+
+/* 大红包 */
+.big_red {
+	width: 220px;
+	height: 220px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+
+.big_red img {
+     width: 220px; 
+	/* width: 100px; */
+	animation: redpacket 4s;
+	/* animation: redMove 1.5s infinite; */
+	/* -moz-animation:redpacket 5s; /* Firefox */ 
+	/* -webkit-animation:redpacket 5s infinite; /* Safari and Chrome */ 
+	/* -o-animation:redpacket 5s; /* Opera */ 
+}
+
+/* css动画 */
+@keyframes redpacket {
+	0% {
+		width: 0px;
+	}	
+	100% {
+		width: 220px;
+	}
+}

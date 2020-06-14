@@ -1,0 +1,332 @@
+html, body {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#app {
+	width: 100%;
+	height: 100%;
+	display: flex;
+}
+
+/* 首页采取左右盒子布局  左边只放导航栏 右边盒子放顶部栏 内容盒子 底部栏*/
+
+/* 左边导航栏 */
+
+.left-side {
+	width: 220px;
+	/* height: 100%; */
+	/* background-color: #545c64; */
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+}
+
+/* 左上盒子 */
+
+.left-top-box {
+	width: 100%;
+	height: 200px;
+	/* background-color: #545c64; */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+	/* justify-content: center; */
+}
+
+/* 系统名称 */
+
+.left-top-title {
+	width: 100%;
+	/* color: #ffd04b; */
+	font-size: 20px;
+	border-bottom: 1px solid #646464;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 50px;
+}
+
+/* 用户头像 */
+
+.left-top-avatar {
+	width: 90px;
+	height: 90px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #7b7256;
+	margin-top: 20px;
+}
+
+.left-top-avatar img {
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+}
+
+.left-top-welcome {
+	/* color: #ffd04b; */
+	font-size: 12px;
+	margin-top: 10px;
+}
+
+/* 左边导航栏 */
+
+.left-navs-box {
+	width: 220px;
+	bottom: 0;
+	left: 0;
+	top: 200px;
+	position: absolute;
+	overflow: hidden;
+}
+
+.navs-item-box {
+	width: 220px;
+	/* height: 500px; */
+}
+
+.navs-inner-box {
+	position: absolute;
+	overflow-y: scroll;
+	top: 0;
+	left: 0;
+	bottom: 20px;
+}
+
+/* 右边区域 */
+
+.right-box {
+	height: 100%;
+	background-color: #EEEEEE;
+	position: absolute;
+	left: 220px;
+	top: 0;
+	right: 0;
+}
+
+/* 顶部栏 */
+
+.right-header {
+	width: 100%;
+	height: 50px;
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.right-header i {
+	font-size: 28px;
+	margin-left: 10px;
+}
+
+/* 顶部栏右边 */
+
+.header-right {
+	/* width: 150px; */
+	display: flex;
+	/* justify-content: space-between; */
+	align-items: center;
+	margin-right: 20px;
+}
+
+.item {
+	margin-right: 40px;
+}
+
+.el-dropdown-link {
+	margin-left: 10px;
+}
+
+.header-right i {
+	font-size: 18px;
+}
+
+/* tab 栏 */
+
+.right-tab-box {
+	/* width: 100%; */
+	height: 40px;
+	background-color: #F5F7F9;
+	display: flex;
+	position: relative;
+	max-width: 100%;
+	align-items: center;
+}
+
+/* 左边箭头 */
+
+.tab-left {
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 18px;
+	position: absolute;
+	left: 0px;
+	/* background-color: #00FF00; */
+	z-index: 10;
+}
+
+.tab-right {
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 18px;
+	position: absolute;
+	right: 40px;
+	/* background-color: #00FF00; */
+	z-index: 10;
+}
+
+/* 关闭tabs 组 */
+
+.tabs-close-box {
+	width: 35px;
+	height: 30px;
+	margin-right: 10px;
+	background-color: white;
+	display: flex;
+	align-items: center;
+	border-radius: 5px;
+	justify-content: center;
+}
+
+.tab-left a:hover {
+	color: #007DDB;
+}
+
+.tab-right a:hover {
+	color: #007DDB;
+}
+
+.tab-item-box {
+	width: 100%;
+	height: 50px;
+	z-index: 9;
+	margin: 0 40px;
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+	position: relative;
+	z-index: 9;
+	padding: 0 5px;
+	-webkit-transition: all .5s;
+}
+
+/* tabs 标签列表盒子 可隐藏标签 */
+
+.tab-item-ul {
+	min-width: 200px;
+	z-index: 11;
+	position: absolute;
+	display: flex;
+	justify-content: space-between;
+	/* background-color: #007DDB; */
+	left: 0px;
+	transition: all .5s;
+	-webkit-transition: all .5s;
+	width: max-content;
+}
+
+.tab-item {
+	width: auto;
+	height: 30px;
+	background-color: #FFFFFF;
+	border-radius: 3px;
+	display: flex;
+	align-items: center;
+	padding: 0 10px;
+	margin: 0 5px;
+	position: relative;
+	cursor: pointer;
+}
+
+.tab-item-active {
+	color: #01AAED;
+}
+
+.tab-item-icon {
+	margin-right: 5px;
+}
+
+.tab-item-text {
+	/* width: auto; */
+	min-width: 45px;
+	font-size: 14px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex: 1;
+}
+
+.tab-item-close {
+	width: 20px;
+	height: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1999;
+}
+
+.tab-item-close:hover {
+	background-color: #ffad7d;
+	color: white;
+	border-radius: 50%;
+	z-index: 1999;
+}
+
+/* 内容页面区域 */
+
+.right-contain {
+	/* width: 96%;
+	height: 80vh; */
+	background-color: #f5f5f5;
+	/* padding: 0 2%; */
+	position: absolute;
+	right: 10px;
+	left: 10px;
+	top: 100px;
+	bottom: 10px;
+}
+
+/* 底部栏 */
+
+.right-footer {
+	position: absolute;
+	bottom: 0;
+	height: 50px;
+	left: 0;
+	right: 0;
+	color: white;
+	display: flex;
+	align-items: center;
+	border-left: 1px solid #fff;
+}
+
+.right-footer span {
+	margin-left: 100px;
+}
+
+/* 覆盖样式 */
+
+.el-menu {
+	border-right: solid 0px #e6e6e6 !important;
+}
+
+/* 公告 */
+
+.notice-box {
+	text-align: center;
+}

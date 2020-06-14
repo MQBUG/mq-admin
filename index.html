@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>mq-admin</title>
+		<link rel="stylesheet" href="./css/mqadmin.css" />
+		<script src="./js/mqadmin.js"></script>
+	</head>
+	<body>
+		<div id="app" style="display: none;">
+			<!-- 左边 导航栏 -->
+			<div class="left-side" :style="{backgroundColor:webInfo.bg}">
+				<!-- 顶部盒子 显示系统名称 头像 欢迎 -->
+				<div class="left-top-box">
+					<div class="left-top-title" :style="{color:webInfo.textColorActive}">{{adminName}}</div>
+					<div class="left-top-avatar">
+						<img src="./img/head.jpg" />
+					</div>
+					<div class="left-top-welcome" :style="{color:webInfo.textColorActive}">{{adminName}}欢迎你！</div>
+				</div>
+				<!-- 导航栏盒子-->
+				<div class="left-navs-box">
+					<div class="navs-inner-box">
+						<el-menu :default-active="id" class="navs-item-box" :background-color="webInfo.bg" :text-color="webInfo.textColor"
+						 :active-text-color="webInfo.textColorActive">
+							<el-menu-item @click="welTab" index="0">
+								<i class="el-icon-s-platform"></i>
+								<span slot="title">控制台</span>
+							</el-menu-item>
+							<div v-for="(item,index) in navs" :key="item.id">
+								<!-- 没有子选项 -->
+								<el-menu-item @click="openTabs(item)" v-if="item.href!='#'" :index="item.id">
+									<i :class="item.icon"></i>
+									<span slot="title">{{item.title}}</span>
+								</el-menu-item>
+								<!-- 有子选项 -->
+								<el-submenu v-if="item.href=='#'" :index="item.id">
+									<template slot="title"><i :class="item.icon"></i>{{item.title}}</template>
+									<el-menu-item v-for="(item,index) in item.children" @click="openTabs(item)" :key="item.id" :index="item.id">
+										<i :class="item.icon"></i>
+										{{item.title}}
+									</el-menu-item>
+								</el-submenu>
+							</div>
+						</el-menu>
+					</div>
+				</div>
+			</div>
+			<!-- /左边 导航栏 -->
+
+			<!-- 右边区域 -->
+			<div class="right-box">
+				<!-- 顶部栏 -->
+				<div class="right-header">
+					<i @click="isShowNav" :class="showNav?'el-icon-s-fold':'el-icon-s-unfold'"></i>
+					<div class="header-right">
+						<el-tooltip content="系统公告" placement="bottom" effect="light">
+							<el-badge is-dot class="item"><i @click="notice" class="el-icon-bell"></i></el-badge>
+						</el-tooltip>
+						<el-avatar size="small" src="./img/head.jpg"></el-avatar>
+						<!--个人信息操作 -->
+						<el-dropdown :show-timeout=100 @command="personCommand">
+							<span class="el-dropdown-link">
+								{{adminName}}<i class="el-icon-arrow-down el-icon--right"></i>
+							</span>
+							<el-dropdown-menu slot="dropdown">
+								<el-dropdown-item command="center">个人中心</el-dropdown-item>
+								<el-dropdown-item command="base">基本资料</el-dropdown-item>
+								<el-dropdown-item command="logout" divided>退出登录</el-dropdown-item>
+							</el-dropdown-menu>
+						</el-dropdown>
+					</div>
+
+				</div>
+				<!-- tab 标签栏 -->
+				<div class="right-tab-box">
+					<div class="tab-left" @click="tabsLeft"><a href="#"><i class="el-icon-arrow-left"></i></a></div>
+					<div class="tab-item-box">
+						<div class="tab-item-ul">
+							<div class="tab-item" @click="welTab" :class="welcome?'tab-item-active':'1'">
+								<i class="el-icon-s-platform  tab-item-icon"></i>
+								<div class="tab-item-text">控制台</div>
+							</div>
+							<div class="tab-item" @click="tabActive(item)" :id="item.id" :class="id==item.id?'tab-item-active':'1'" v-for="(item,index) in tabs">
+								<i class="tab-item-icon" :class="item.data.icon"></i>
+								<div class="tab-item-text">{{item.data.title}}</div>
+								<i @click.stop="tabClose(item)" class="el-icon-close tab-item-close"></i>
+							</div>
+						</div>
+					</div>
+					<div class="tab-right" @click="tabsRight"><a href="#"><i class="el-icon-arrow-right"></i></a></div>
+					<div class="tabs-close-box">
+						<el-dropdown @command="tabsCloseItem" :show-timeout=100>
+							<i class="el-icon-arrow-down"></i>
+							<el-dropdown-menu slot="dropdown">
+								<el-dropdown-item command="a">关闭当前标签页</el-dropdown-item>
+								<el-dropdown-item command="b">关闭其他标签页</el-dropdown-item>
+								<el-dropdown-item command="c">关闭所有标签页</el-dropdown-item>
+							</el-dropdown-menu>
+						</el-dropdown>
+					</div>
+				</div>
+				<!-- 内容区域 iframe -->
+				<div class="right-contain">
+					<iframe src="pages/welcome.html" frameborder="0" scrolling="yes" width="100%" height="100%" v-show="welcome">
+					</iframe>
+					<template v-for="(item,index) in tabs">
+						<iframe :src="item.data.href" frameborder="0" scrolling="yes" width="100%" height="100%" v-show="id==item.id">
+						</iframe>
+					</template>
+				</div>
+
+				<!-- 底部栏 -->
+				<!-- <div class="right-footer" :style="{backgroundColor:webInfo.bg}"><span>®{{footerText}}</span></div> -->
+			</div>
+			<!-- /右边区域 -->
+		</div>
+
+		<!-- 公告 -->
+		<div id="notice" style="display: none;" class="notice-box">
+			欢迎使用 mq-admin<br />
+			欢迎使用 mq-admin<br />
+			欢迎使用 mq-admin<br />
+			欢迎使用 mq-admin<br />
+		</div>
+
+	</body>
+</html>
+<script src="./lib/web/web.js"></script>
